@@ -145,9 +145,11 @@ public final class QrCodeGraphicsUtils {
     public static void savePic(BufferedImage bufferImage, int scale, String outFormat, double outPutQuality,
         String pngPath) throws Exception {
         File file = new File(pngPath);
+        // 自定义压缩.
         byte[] picByQuality = QrCodeBaseUtils.compressPicByQuality(bufferImage, 1f);
         ByteArrayInputStream in = new ByteArrayInputStream(picByQuality);
         BufferedImage qualityBufferImage = ImageIO.read(in);
+        // Google 工具包 写出文件
         Thumbnails.of(qualityBufferImage).scale(scale).outputFormat(outFormat).outputQuality(outPutQuality)
             .toFile(file);
     }

@@ -11,6 +11,8 @@ import java.io.InputStream;
 
 import javax.imageio.ImageIO;
 
+import org.apache.commons.lang.StringUtils;
+
 /**
  * 画笔工具类
  * 
@@ -18,10 +20,6 @@ import javax.imageio.ImageIO;
  * @date 2019年8月7日
  */
 public class GraphicsUtils {
-    /**
-     * 项目路径。
-     */
-    private static final String filePath = "F:/code/code-kjx/graphics/src/main/resources/images/";
 
     /**
      * 代码中的 坐标 依据UI 切图的 像素值。 请根据个人需要调整
@@ -29,13 +27,13 @@ public class GraphicsUtils {
      * @param linkUrl
      *            分享链接
      * @param logoStatus
-     *            是否加logo
+     *            是否加logo 一般是 用户的头像. 这里的logo是加在 二维码的中间.
      * @param logoPath
      *            logo地址
      * @param backgroundUrl
-     *            模板地址
+     *            背景模板地址
      * @param spuPicUrl
-     *            spu 主图
+     *            商品 主图
      * @param spuLeaguerPrice
      *            V price
      * @param spuPrice
@@ -47,7 +45,7 @@ public class GraphicsUtils {
     public static void createPosterByRedTemplate(String linkUrl, boolean logoStatus, String logoPath,
         String backgroundUrl, String spuPicUrl, String spuLeaguerPrice, String spuPrice, String spuName)
         throws Exception {
-        // 二维码对象
+        // qrCode
         BufferedImage qrCodeImage = QrCodeGraphicsUtils.createQrCode(linkUrl, false, logoStatus, logoPath, true, 160);
 
         // 海报背景
@@ -93,25 +91,22 @@ public class GraphicsUtils {
             inputStream.close();
         }
 
-        QrCodeGraphicsUtils.savePic(bufferImage, 1, "jpg", 0.95, filePath + System.currentTimeMillis() + "");
+        QrCodeGraphicsUtils.savePic(bufferImage, 1, "jpg", 0.8, System.currentTimeMillis() + "");
     }
 
     /**
-     * 请 更改 filePath 运行 main 函数即可。
+     * getResource 返回的 Path 可能会以 / 开头,这里做了截取.
      * 
-     * @param args
-     * @throws Exception
+     * @param path
+     * @return
      */
-    public static void main(String[] args) throws Exception {
-        String spuName = "澳洲风味小麦白啤（APA）";
-        String linkUrl = "https://w.url.cn/s/AiNukkx";
-        boolean logoStatus = false;
-        String logoPath = filePath + "/132.jpg";
-        String backgroundUrl = filePath + "/welfare003.jpg";
-        String spuPicUrl = filePath + "/item.jpg";
-        String spuLeaguerPrice = "会员福利￥66.80";
-        String spuPrice = "直购价￥88.90";
-        createPosterByRedTemplate(linkUrl, logoStatus, logoPath, backgroundUrl, spuPicUrl, spuLeaguerPrice, spuPrice,
-            spuName);
+    public static String handlePath(String path) {
+        if (StringUtils.isNotBlank(path)) {
+            if (path.startsWith("/")) {
+                System.err.println("true");
+                path = path.substring(1, path.length());
+            }
+        }
+        return path;
     }
 }
