@@ -25,6 +25,9 @@ public class AngzkRun {
         String spuPicUrl = folderPath + "/item.jpg";
         String memberPrice = "会员福利￥66.80";
         String price = "直购价￥88.90";
+
+
+
         GraphicsUtils.createPosterByRedTemplate(linkUrl, true, logoPath, backgroundUrl, spuPicUrl,
                 memberPrice, price, spuName);
     }

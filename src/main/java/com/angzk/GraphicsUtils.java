@@ -36,6 +36,10 @@ public class GraphicsUtils {
      */
     public static void createPosterByRedTemplate(String linkUrl, boolean logoStatus, String logoPath,
                                                  String backgroundUrl, String spuPicUrl, String memberPrice, String price, String spuName) {
+
+        System.err.println("LOGO 地址 [logoPath] : " + logoPath);
+        System.err.println("背景板 地址 [backgroundUrl] : " + backgroundUrl);
+        System.err.println("商品图片 地址 [spuPicUrl] : " + spuPicUrl);
         // 生成二维码
         BufferedImage qrCodeImage = QrCodeGraphicsUtils.createQrCode(linkUrl, false, logoStatus, logoPath, true, 160);
 
