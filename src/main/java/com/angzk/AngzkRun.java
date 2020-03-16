@@ -1,7 +1,9 @@
 package com.angzk;
 
 /**
- * @author Administrator
+ * 测试启动类
+ *
+ * @author Angzk
  * @date 2019年10月23日
  */
 public class AngzkRun {
@@ -25,7 +27,6 @@ public class AngzkRun {
         String spuPicUrl = folderPath + "/item.jpg";
         String memberPrice = "会员福利￥66.80";
         String price = "直购价￥88.90";
-
 
 
         GraphicsUtils.createPosterByRedTemplate(linkUrl, true, logoPath, backgroundUrl, spuPicUrl,

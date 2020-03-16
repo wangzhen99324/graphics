@@ -131,29 +131,6 @@ public final class QrCodeGraphicsUtils {
     }
 
     /**
-     * 保存图片
-     *
-     * @param bufferImage   画布对象
-     * @param scale         缩放 (0.0~1.0)
-     * @param outFormat     输出格式(PNG JPG)
-     * @param outPutQuality 输出品质(0.0d ~ 1.0d)
-     * @param pngPath       输出路径
-     */
-    public static void savePic(BufferedImage bufferImage, int scale, String outFormat, double outPutQuality,
-                               String pngPath) {
-        try {
-            if (StringUtils.isNotBlank(pngPath) && bufferImage != null) {
-                File file = new File(pngPath);
-                // Google 工具包 输出文件
-                Thumbnails.of(bufferImage).scale(scale).outputFormat(outFormat).outputQuality(outPutQuality)
-                        .toFile(file);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
      * 绘制海报文字(单行文字)
      *
      * @param graphics 画笔对象
@@ -251,6 +228,29 @@ public final class QrCodeGraphicsUtils {
             graphics.drawString(lineStr, width, height + (i + 1) * lineHeight);
         }
         return lineNum;
+    }
+
+    /**
+     * 保存图片
+     *
+     * @param bufferImage   画布对象
+     * @param scale         缩放 (0.0~1.0)
+     * @param outFormat     输出格式(PNG JPG)
+     * @param outPutQuality 输出品质(0.0d ~ 1.0d)
+     * @param pngPath       输出路径
+     */
+    public static void savePic(BufferedImage bufferImage, int scale, String outFormat, double outPutQuality,
+                               String pngPath) {
+        try {
+            if (StringUtils.isNotBlank(pngPath) && bufferImage != null) {
+                File file = new File(pngPath);
+                // Google 工具包 输出文件
+                Thumbnails.of(bufferImage).scale(scale).outputFormat(outFormat).outputQuality(outPutQuality)
+                        .toFile(file);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }

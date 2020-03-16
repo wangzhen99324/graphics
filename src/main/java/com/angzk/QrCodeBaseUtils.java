@@ -25,6 +25,13 @@ import java.net.URL;
 import java.util.Hashtable;
 import java.util.Iterator;
 
+
+/**
+ * 二维码绘制 基础工具类
+ *
+ * @author Angzk
+ * @date 2019年10月23日
+ */
 public class QrCodeBaseUtils {
 
     /**
