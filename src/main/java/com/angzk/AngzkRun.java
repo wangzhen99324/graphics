@@ -16,9 +16,6 @@ public class AngzkRun {
     public static void main(String[] args) {
         // 获取Resource下 images 的目录
         String folderPath = GraphicsUtils.class.getResource("/images").getPath();
-        folderPath = GraphicsUtils.handlePath(folderPath);
-
-        System.err.println(folderPath);
 
         String spuName = "澳洲风味小麦白啤（APA）";
         String linkUrl = "https://w.url.cn/s/AiNukkx";
